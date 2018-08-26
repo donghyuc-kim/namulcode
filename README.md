@@ -40,28 +40,20 @@
 </details>
 ```
 
-```js
-el.setAttribute('data-key', 'v'); 
-el.getAttribute('data-key'); 
-```
+## CSS
 
-~~~js
-el.dataset.key = 'v'; 
-el.dataset.key; 
-~~~
-
-```js
-fucntio repaint(el) {
-    el.className = el.className; 
+```css
+* {
+    -webkit-appearance: none; 
 }
 ```
-
 
 ## SASS (SCSS)
 
 - 브라우저에서 컴파일 하기 : https://www.sassmeister.com/
 - 즐겨찾기 (학습)
     - https://gist.github.com/jareware/4738651
+    - http://sass-lang.com/documentation/file.SASS_REFERENCE.html
 
 ```scss
 @mixin clear {
@@ -72,13 +64,17 @@ fucntio repaint(el) {
         clear: both;
     }
 }
+```
 
+```scss
 @mixin hidetxt {
     position: absolute; 
     visibility: hidden;
     text-indent: -9999em;
 }
+```
 
+```scss
 @mixin ellipsis{
     overflow: hidden;
     text-overflow: ellipsis;
@@ -99,19 +95,29 @@ fucntio repaint(el) {
     -webkit-box-orient: vertical;
     word-wrap: break-word; 
 }
+```
 
+```scss
 @mixin to-button {
     display: inline-block; 
     text-align: center; 
 }
 
-@mixin clear-
+@mixin set-action {
+    cursor: pointer; 
+    -ms-user-select: none; 
+    user-select: none; 
+}
+```
 
+```scss
 @mixin vertical-px($px) {
     position: relative; 
     top: $px;
 }
+```
 
+```scss
 $path: 'https://localhost:3000';
 @mixin pseudo-icon($name-pseudo, $src, $w:auto, $name-position:'left', $lr:0) {
     &:#{$name-pseudo} {
@@ -126,6 +132,82 @@ $path: 'https://localhost:3000';
 }
 .test--pesudo-icon {
   @include pseudo-icon('after', '/test.png', 20px);
+}
+```
+
+```scss
+.world {
+  color: red; 
+  
+  .hello & {
+    display: block; 
+  }
+}
+
+/* output : */
+.world {
+  color: red;
+}
+.hello .world {
+  display: block;
+}
+```
+
+```scss
+@mixin mx1() {
+  text-decoration: underline; 
+}
+
+%ex1 { 
+  border: 1px solid red; 
+}
+
+.hello { 
+  color: red; 
+}
+
+.world { 
+  @include mx1; 
+  @extend .hello; 
+  @extend %ex1; 
+  text-align: center; 
+}
+
+.dev {
+  @extend %ex1; 
+}
+
+/* output : */
+.dev, .world {
+  border: 1px solid red;
+}
+
+.hello, .world {
+  color: red;
+}
+
+.world {
+  text-decoration: underline;
+  text-align: center;
+}
+```
+
+
+## javascript 
+
+```js
+el.setAttribute('data-key', 'v'); 
+el.getAttribute('data-key'); 
+```
+
+~~~js
+el.dataset.key = 'v'; 
+el.dataset.key; 
+~~~
+
+```js
+function repaint(el) {
+    el.className = el.className; 
 }
 ```
 
