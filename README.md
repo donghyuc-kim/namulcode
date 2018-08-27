@@ -67,7 +67,7 @@
 ```
 
 ```scss
-@mixin hidetxt {
+@mixin hidden {
     position: absolute; 
     visibility: hidden;
     text-indent: -9999em;
